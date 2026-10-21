@@ -1,5 +1,7 @@
 package com.example.chess.service;
 
+import com.example.chess.dto.NewGameResponse;
+import com.example.chess.model.Board;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -7,7 +9,8 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class ChessService {
 
-    public String newGame() {
-    return "";
+    public NewGameResponse newGame() {
+        Board board = new Board();
+        return new NewGameResponse(board);
     }
 }

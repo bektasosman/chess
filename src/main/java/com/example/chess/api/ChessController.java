@@ -1,5 +1,6 @@
 package com.example.chess.api;
 
+import com.example.chess.dto.NewGameResponse;
 import com.example.chess.service.ChessService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -13,8 +14,8 @@ public class ChessController {
     private final ChessService chessService;
 
     @PostMapping("/api/games")
-    public ResponseEntity<String> newGame(){
-        String responseMessage = chessService.newGame();
+    public ResponseEntity<NewGameResponse> newGame(){
+        NewGameResponse responseMessage = chessService.newGame();
         return ResponseEntity.ok(responseMessage);
     }
 

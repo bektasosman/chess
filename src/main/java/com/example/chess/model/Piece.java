@@ -2,25 +2,46 @@ package com.example.chess.model;
 
 import lombok.Getter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 public abstract class Piece {
 
     private final Player player;
-    private Position position;
 
-    Piece(Player player, Position position){
+    public Piece(Player player) {
         this.player = player;
-        this.position = position;
     }
 
-    public abstract List<Position> moveOptions(Board board);
+    protected List<Position> getSlidingMoves(Board board, Position currentPos, int[][] directions) {
+        List<Position> moves = new ArrayList<>();
 
-    public Position move(Position to) {
-         this.position = to;
-         return this.position;
+        for (int[] dir : directions) {
+            int dRow = dir[0];
+            int dCol = dir[1];
+
+            int newRow = currentPos.row() + dRow;
+            int newCol = currentPos.col() + dCol;
+
+            while (board.isWithinBoard(newRow, newCol)) {
+                Piece pieceAtTarget = board.getPiece(newRow, newCol);
+
+                if (pieceAtTarget == null) {
+                    moves.add(new Position(newRow, newCol));
+                } else {
+                    if (pieceAtTarget.getPlayer() != this.getPlayer()) {
+                        moves.add(new Position(newRow, newCol));
+                    }
+                    break;
+                }
+
+                newRow += dRow;
+                newCol += dCol;
+            }
+        }
+        return moves;
     }
 
-
+    public abstract List<Position> moveOptions(Board board, Position currentPos);
 }

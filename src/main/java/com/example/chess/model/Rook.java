@@ -1,0 +1,20 @@
+package com.example.chess.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Rook extends Piece {
+
+    private static final int[][] DIRECTIONS = {
+            {1, 0}, {-1, 0}, {0, 1}, {0, -1}
+    };
+
+    public Rook(Player player) {
+        super(player);
+    }
+
+    @Override
+    public List<Position> moveOptions(Board board, Position currentPos) {
+        return getSlidingMoves(board, currentPos, DIRECTIONS);
+    }
+}
