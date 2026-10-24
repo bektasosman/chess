@@ -1,6 +1,9 @@
-package com.example.chess.model;
+package com.example.chess.model.pieces;
 
-import java.util.ArrayList;
+import com.example.chess.model.Board;
+import com.example.chess.model.Player;
+import com.example.chess.model.Position;
+
 import java.util.List;
 
 public class Rook extends Piece {
@@ -10,7 +13,7 @@ public class Rook extends Piece {
     };
 
     public Rook(Player player) {
-        super(player);
+        super(player, PieceType.ROOK);
     }
 
     @Override

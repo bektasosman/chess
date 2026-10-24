@@ -1,9 +1,12 @@
-package com.example.chess.model;
+package com.example.chess.model.pieces;
 
-import java.util.ArrayList;
+import com.example.chess.model.Board;
+import com.example.chess.model.Player;
+import com.example.chess.model.Position;
+
 import java.util.List;
 
-public class Queen extends Piece{
+public class Queen extends Piece {
 
     private static final int[][] DIRECTIONS = {
             {1, 1}, {-1, -1}, {1, -1}, {-1, 1},
@@ -11,7 +14,7 @@ public class Queen extends Piece{
     };
 
     public Queen(Player player){
-        super(player);
+        super(player, PieceType.QUEEN);
     }
 
     @Override

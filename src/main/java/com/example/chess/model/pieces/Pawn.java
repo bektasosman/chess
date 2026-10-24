@@ -1,4 +1,6 @@
-package com.example.chess.model;
+package com.example.chess.model.pieces;
+
+import com.example.chess.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +8,7 @@ import java.util.List;
 public class Pawn extends Piece {
 
     public Pawn(Player player) {
-        super(player);
+        super(player, PieceType.PAWN);
     }
 
     @Override
